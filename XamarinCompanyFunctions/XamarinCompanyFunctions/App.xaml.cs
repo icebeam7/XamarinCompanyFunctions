@@ -13,7 +13,7 @@ namespace XamarinCompanyFunctions
         {
             InitializeComponent();
 
-            MainPage = new XamarinCompanyFunctions.MainPage();
+            MainPage = new XamarinCompanyFunctions.View.CompanyListPage();
         }
 
         protected override void OnStart()
