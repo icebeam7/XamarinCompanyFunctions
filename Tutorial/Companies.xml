@@ -1,0 +1,23 @@
+<Addresses>
+	<Address name="Instituto Tecnologico de Celaya" company="TecNM">
+		<Street>A. Garcia Cubas</Street>
+		<Number>600</Number>
+		<City>Celaya</City>
+		<PostalCode>38300</PostalCode>
+		<Coords>20.5391485 -100.8191762</Coords>
+	</Address>
+	<Address name="Universidad de Guanajuato" company="UGto">
+		<Street>Pedro Lascurain de Retana</Street>
+		<Number>5</Number>
+		<City>Guanajuato</City>
+		<PostalCode>36000</PostalCode>
+		<Coords>21.0172925 -101.3233052</Coords>
+	</Address>
+	<Address name="Tecnologico de Queretaro" company="TecNM">
+		<Street>Av. Tecnológico</Street>
+		<Number>S/N</Number>
+		<City>Queretaro</City>
+		<PostalCode>76000</PostalCode>
+		<Coords>20.5943228 -100.4051776</Coords>
+	</Address>
+</Addresses>

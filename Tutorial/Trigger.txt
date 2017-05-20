@@ -1,0 +1,34 @@
+#r "System.Xml.Linq"
+using System.Net;
+using System.Xml.Linq;
+
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string inputFile, TraceWriter log)
+{
+    log.Info("C# HTTP trigger function processed a request\n" + inputFile);
+
+    string requestedCompany = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => q.Key.ToLower() == "company")
+        .Value;
+
+    log.Info("Requested company: " + requestedCompany);
+
+    var addresses = XDocument.Parse(inputFile);
+
+    var filteredAddresses = addresses.Root.Elements("Address")
+        .Where(e => (e.Attribute("company")?.Value.ToLower() == requestedCompany || 
+            string.IsNullOrEmpty(requestedCompany)));
+
+    //Creating anonymous type here to return.
+    var addressesResult = filteredAddresses.Select(a => new 
+    {
+        Name = a.Attribute("name").Value,
+        Company = a.Attribute("company").Value,
+        Street = a.Element("Street").Value,
+        Number = a.Element("Number").Value,
+        City = a.Element("City").Value,
+        PostalCode = a.Element("PostalCode").Value,
+        Coords = a.Element("Coords").Value,
+    });
+
+    return req.CreateResponse(HttpStatusCode.OK, addressesResult);
+}
